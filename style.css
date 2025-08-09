@@ -1,0 +1,158 @@
+body {
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #5e5e5e 0%, #5e5e5e 99%, #5e5e5e 100%);
+    margin: 0;
+    color: #333;
+    text-align: center;
+}
+
+.container {
+    background: white;
+    padding: 30px 40px;
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+    max-width: 800px;
+    width: 90%;
+    position: relative;
+    overflow: hidden;
+    animation: fadeIn 1.5s ease-in-out;
+    z-index: 10;
+}
+
+h1 {
+    font-size: 2.5em;
+    color: #d6336c;
+    margin-bottom: 10px;
+}
+
+p {
+    font-size: 1.1em;
+    line-height: 1.6;
+}
+
+#choicesContainer {
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+}
+
+.choice-btn {
+    background-color: #ff6b6b;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    font-size: 1em;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out, background-color 0.2s, opacity 0.5s;
+}
+
+.choice-btn:hover {
+    background-color: #ff4757;
+    transform: scale(1.05);
+}
+
+.hidden {
+    opacity: 0;
+    height: 0;
+    overflow: hidden;
+    transition: opacity 0.5s ease-in-out, height 0.5s;
+}
+
+.visible {
+    opacity: 1;
+    height: auto;
+    transition: opacity 0.5s ease-in-out, height 0.5s;
+}
+
+.error-text {
+    color: #e74c3c;
+    font-weight: bold;
+    font-size: 1.2em;
+    margin-top: 20px;
+}
+
+.success-text {
+    color: #2ecc71;
+    font-size: 1.2em;
+    margin-top: 20px;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+/* สไตล์สำหรับรูปภาพลอย */
+#floatingElementsContainer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 5;
+}
+
+.floating-image {
+    position: absolute;
+    width: 150px; /* ปรับขนาดรูปภาพตามต้องการ */
+    height: auto;
+    opacity: 0.7; /* ปรับความโปร่งใสตามต้องการ */
+    user-select: none;
+    pointer-events: none;
+    animation: floatingImage 15s infinite linear;
+}
+
+/* @keyframes สำหรับให้รูปภาพลอยไปมา */
+@keyframes floatingImage {
+    0% { transform: translateX(0) translateY(0) rotate(0deg); }
+    25% { transform: translateX(80px) translateY(50px) rotate(20deg); }
+    50% { transform: translateX(150px) translateY(-30px) rotate(0deg); }
+    75% { transform: translateX(70px) translateY(-80px) rotate(-15deg); }
+    100% { transform: translateX(0) translateY(0) rotate(0deg); }
+}
+
+/* @keyframes สำหรับให้ข้อความลอยไปมา */
+@keyframes floatingText {
+    0% { transform: translateX(0) translateY(0) rotate(0deg); }
+    25% { transform: translateX(-80px) translateY(-50px) rotate(-10deg); }
+    50% { transform: translateX(-150px) translateY(30px) rotate(0deg); }
+    75% { transform: translateX(-70px) translateY(80px) rotate(15deg); }
+    100% { transform: translateX(0) translateY(0) rotate(0deg); }
+}
+
+/* Responsive Design สำหรับหน้าจอขนาดเล็ก (เช่น มือถือ) */
+@media (max-width: 600px) {
+    .container {
+        padding: 20px; /* ลด Padding บนมือถือ */
+    }
+
+    h1 {
+        font-size: 1.8em; /* ลดขนาดหัวข้อ */
+    }
+
+    p {
+        font-size: 1em; /* ลดขนาดตัวอักษรปกติ */
+    }
+
+    .choice-btn {
+        width: 100%; /* ทำให้ปุ่มกว้างเต็มหน้าจอ */
+        min-width: unset; /* ลบค่าความกว้างขั้นต่ำ */
+    }
+
+    .floating-image {
+        width: 50px; /* ลดขนาดรูปภาพลอย */
+    }
+
+    .floating-text {
+        font-size: 1.5em; /* ลดขนาดข้อความลอย */
+    }
+}
